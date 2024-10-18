@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Mejorada</title>
+    <style>
+        input {
+            width: 100%;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 70px;
+            height: 70px;
+            font-size: 22px;
+            margin: 5px;
+        }
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Calculadora Mejorada</h2>
+    <div>
+        <input type="text" id="pantalla" readonly>
+    </div>
+    <div>
+        <button onclick="borrarPantalla()">AC</button>
+        <button onclick="agregarPantalla('1')">1</button>
+        <button onclick="agregarPantalla('2')">2</button>
+        <button onclick="agregarPantalla('+')">+</button>
+    </div>
+    <div>
+        <button onclick="agregarPantalla('3')">3</button>
+        <button onclick="agregarPantalla('4')">4</button>
+        <button onclick="agregarPantalla('5')">5</button>
+        <button onclick="agregarPantalla('-')">-</button>
+    </div>
+    <div>
+        <button onclick="agregarPantalla('6')">6</button>
+        <button onclick="agregarPantalla('7')">7</button>
+        <button onclick="agregarPantalla('8')">8</button>
+        <button onclick="agregarPantalla('*')">*</button>
+    </div>
+    <div>
+        <button onclick="agregarPantalla('9')">9</button>
+        <button onclick="agregarPantalla('0')">0</button>
+        <button onclick="agregarPantalla('.')">.</button>
+        <button onclick="agregarPantalla('/')">/</button>
+    </div>
+    <div>
+        <button onclick="calcularResultado()">=</button>
+    </div>
+
+    <script>
+        function agregarPantalla(valor) {
+            const pantalla = document.getElementById('pantalla');
+            pantalla.value += valor;
+        }
+
+        function borrarPantalla() {
+            document.getElementById('pantalla').value = '';
+        }
+
+        function calcularResultado() {
+            const pantalla = document.getElementById('pantalla');
+            try {
+                let resultado = eval(pantalla.value);
+                pantalla.value = resultado;
+            } catch (error) {
+                pantalla.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
